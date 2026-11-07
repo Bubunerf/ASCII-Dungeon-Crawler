@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void drawint_map(char current_map[5][7]) {
+void drawing_map(char current_map[5][7]) {
     int rows, collumns;
 
     for (rows = 0; rows < 5; rows++) {
@@ -8,6 +8,35 @@ void drawint_map(char current_map[5][7]) {
             printf("%c" , current_map[rows][collumns]);
         }
         printf("\n");
+    }
+}
+
+void player_movement(char direction, int *position_x, int *position_y) {
+    switch (direction) {
+        case 'w':
+            printf("Moving Up\n");
+            *position_y -= 1;
+            break;
+
+        case 's':
+            printf("Moving Down\n");
+            *position_y += 1;
+            break;
+
+        case 'a':
+            printf("Moving to the left\n");
+            *position_x -= 1;
+            break;
+
+        case 'd':
+            printf("Moving to the left\n");
+            *position_x += 1;
+            break;
+
+        default:
+            printf("You have given invalid input\n");
+            break;
+
     }
 }
 
@@ -24,42 +53,23 @@ int main(void)
     };
     // Defining the map
     
-    drawint_map(map);
+    drawing_map(map);
    
     // printing the current map
+    char direction;
+    printf("Please enter a direction w/a/s/d\n");
 
+    scanf("  %c", &direction);
+
+    printf("You have choosen %c\n" , direction);
 
     int pos_x = 1;
     int pos_y = 3;
 
-    char direction;
-    printf("Please enter a direction w/a/s/d\n\n");
-    scanf("%c", &direction);
+    player_movement(direction , &pos_x , &pos_y);
 
-    printf("You have choosen %c" , direction);
+    printf("Pos X is: %d , Pos Y is: %d" , pos_x , pos_y);
 
-    switch (direction) {
-        case 'w':
-            printf("Moving Up");
-            pos_y -= 1;
-
-        case 's':
-            printf("Moving Down");
-            pos_y += 1;
-        
-        case 'a':
-            printf("Moving to the left");
-            pos_x -= 1;
-        
-        case 'd':
-            printf("Moving to the left");
-            pos_x += 1;
-    }
-
-
-
-
-
-
+    
     return 0;
 }
