@@ -127,7 +127,7 @@ int main(void)
     drawing_map(map);
     }
 
-
+printf("Congratultions you won!!!");
 
     return 0;
 }
