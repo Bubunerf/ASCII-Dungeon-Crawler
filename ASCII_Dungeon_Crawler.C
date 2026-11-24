@@ -111,7 +111,7 @@ int main(void)
             printf("That move is blocked \n");
         }
 
-        printf("New Pos X is: %d , New Pos Y is: %d\n" , current_x , current_y);
+        printf("New Pos X is: %d , New Pos Y is: %d\n" , pos_x , pos_y);
 
         
         
