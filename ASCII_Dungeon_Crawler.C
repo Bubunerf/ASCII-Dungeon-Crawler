@@ -46,7 +46,7 @@ Do a check based set up in which the input for movement in taken and the tile th
 Then we check wheteher the tile we are moving has something such as a wall
 if so we block movement if not we move
  */ 
-bool can_move(int pos_x, int pos_y ,char map[5][7]) {
+bool can_move(int pos_x, int pos_y ,char map[5][7], bool Has_key) {
 
     if (pos_x < 0 || pos_x >= 7 || pos_y < 0 || pos_y >= 5) {
         return false;
@@ -55,7 +55,9 @@ bool can_move(int pos_x, int pos_y ,char map[5][7]) {
     if (map[pos_y][pos_x] == '#') {
         return false;
     }
-
+    if (map[pos_y][pos_x] == 'D' && !Has_key) {
+        return false;
+    }
     return true;
     
 
@@ -65,10 +67,14 @@ bool can_move(int pos_x, int pos_y ,char map[5][7]) {
 
 int main(void) 
 {
+    printf("================================\nWelcome to the Dungeon Try to escape!\n================================\n\n");
+
+
+    bool Has_key = false;
 
     char map[5][7] = {
         {'#','#','#','#','#','#','#'},
-        {'#','E','.','.','#','E','#'},
+        {'#','K','.','.','#','E','#'},
         {'#','.','#','.','#','D','#'},
         {'#','P','.','.','.','.','#'},
         {'#','#','#','#','#','#','#'}
@@ -99,7 +105,13 @@ int main(void)
 
         player_movement(direction , &current_x , &current_y);
 
-        if (can_move(current_x, current_y ,map)) {
+        if (can_move(current_x, current_y ,map, Has_key)) {
+
+            if (map[current_y][current_x] == 'K') {
+                Has_key = true;
+                printf("You have succesfully collected the key!");
+            }
+
             map[pos_y][pos_x] = '.';
             
             pos_x = current_x;
