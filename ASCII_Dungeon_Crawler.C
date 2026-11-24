@@ -51,7 +51,7 @@ bool can_move(int pos_x, int pos_y ,char map[5][7]) {
         return false;
     }
     
-    if (map[pos_x][pos_y] == '#') {
+    if (map[pos_y][pos_x] == '#') {
         return false;
     }
 
@@ -81,18 +81,20 @@ int main(void)
     int pos_x = 1;
     int pos_y = 3;
 
-    int current_x = pos_x;
-    int current_y = pos_y;
+
 
     int exit_location_x = 5;
     int exit_location_y = 1;
 
-    while (current_x != exit_location_x || current_y != exit_location_y) {
+    while (pos_x != exit_location_x || pos_y != exit_location_y) {
         printf("Please enter a direction w/a/s/d\n");
 
         scanf("  %c", &direction);
 
         printf("You have choosen %c\n" , direction);
+
+        int current_x = pos_x;
+        int current_y = pos_y;
 
         player_movement(direction , &current_x , &current_y);
 
