@@ -109,7 +109,7 @@ int main(void)
 
             if (map[current_y][current_x] == 'K') {
                 Has_key = true;
-                printf("You have succesfully collected the key!");
+                printf("You have succesfully collected the key, now where can you use it?\n\n");
             }
 
             map[pos_y][pos_x] = '.';
@@ -121,15 +121,8 @@ int main(void)
 
         }
         else {
-            printf("That move is blocked \n");
-        }
-
-        printf("New Pos X is: %d , New Pos Y is: %d\n" , pos_x , pos_y);
-
-        
-        
-
-        
+            printf("That move is blocked try somewhere else\n");
+        }        
 
     drawing_map(map);
     }
